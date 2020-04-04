@@ -4,9 +4,7 @@ Repository of project created while passed through courses from UIPath Academy
 
 ## Website of course 
 
-```
-[UI Path Academy](https://academy.uipath.com/landing)
-```
+[UI Path Academy -> click to go](https://academy.uipath.com/landing)
 
 ## Courses
 
