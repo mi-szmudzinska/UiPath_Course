@@ -4,4 +4,5 @@ GetTime/.*
 Variables\,\ Data\ Types\,\ Control\ Flow/*/.*
 Excel\ and\ Data\ Tables/*/.*
 UI\ Interactions/*/.*
-Selectors/*/.*
+Selectors/*/*/.*
+Project\ Organization/*/*/.*
