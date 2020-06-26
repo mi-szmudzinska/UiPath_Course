@@ -45,14 +45,23 @@
       <AssemblyReference>UiPath.Excel</AssemblyReference>
       <AssemblyReference>UiPath.PDF</AssemblyReference>
       <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Sequence sap2010:Annotation.AnnotationText="Create a workflow that:&#xD;&#xA;&#xD;&#xA;Reads the 6th page of &quot;Session 11 - exercise 2 - UiPathOrchestratorAzureInstallationGuide2016.1&quot; (in the attachment)&#xD;&#xA;Reads the 2nd page of &quot;Session 11 - exercise 2 - ScannedDoc&quot; (in the attachment)&#xD;&#xA;Sends an email with both documents attached and with the text from point 1 and text from point 2 as Body" sap:VirtualizedContainerService.HintSize="376,844" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="installationPDFText" />
       <Variable x:TypeArguments="x:String" Name="invoicePDFText" />
-      <Variable x:TypeArguments="x:String" Default="genericUser@email.com" Name="ReceiverAddress" />
-      <Variable x:TypeArguments="x:String" Default="genericUser@email.com" Name="SenderAddress" />
+      <Variable x:TypeArguments="x:String" Name="ReceiverAddress">
+        <Variable.Default>
+          <Literal x:TypeArguments="x:String">user@email.com</Literal>
+        </Variable.Default>
+      </Variable>
+      <Variable x:TypeArguments="x:String" Name="SenderAddress">
+        <Variable.Default>
+          <Literal x:TypeArguments="x:String">user@email.com</Literal>
+        </Variable.Default>
+      </Variable>
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -60,11 +69,11 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ReadPDFText PreserveFormatting="{x:Null}" Text="{x:Null}" DisplayName="Read PDF Text" FileName="Session 11 - exercise 2 - ScannedDoc.pdf" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="ReadPDFText_1" Range="All" />
-    <ui:ReadPDFText PreserveFormatting="{x:Null}" Text="{x:Null}" DisplayName="Read PDF Text" FileName="Session 11 - exercise 2 - UiPathOrchestratorAzureInstallationGuide2016.1.pdf" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="ReadPDFText_2" Range="All" />
+    <ui:ReadPDFText PreserveFormatting="{x:Null}" Text="{x:Null}" DisplayName="Read PDF Text" FileName="Session 11 - exercise 2 - ScannedDoc.pdf" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="ReadPDFText_1" Range="6" />
+    <ui:ReadPDFText PreserveFormatting="{x:Null}" Text="{x:Null}" DisplayName="Read PDF Text" FileName="Session 11 - exercise 2 - UiPathOrchestratorAzureInstallationGuide2016.1.pdf" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="ReadPDFText_2" Range="2" />
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[installationPDFText]" />
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[invoicePDFText]" />
-    <ui:SendOutlookMail Bcc="{x:Null}" Cc="{x:Null}" MailMessage="{x:Null}" TimeoutMS="{x:Null}" Account="[SenderAddress]" Body="[&quot;Here are the text pieces read from the two documents: &quot;  + Environment.NewLine + Environment.NewLine + installationPDFText  + Environment.NewLine +  Environment.NewLine  +  invoicePDFText]" DisplayName="Send Outlook Mail Message" sap:VirtualizedContainerService.HintSize="334,145" sap2010:WorkflowViewState.IdRef="SendOutlookMail_1" IsBodyHtml="False" IsDraft="False" Subject="Text Files" To="[ReceiverAddress]">
+    <ui:SendOutlookMail Bcc="{x:Null}" Cc="{x:Null}" MailMessage="{x:Null}" TimeoutMS="{x:Null}" Account="[SenderAddress]" Body="[&quot;Here are the text pieces read from the two documents: &quot;  + Environment.NewLine + Environment.NewLine + installationPDFText  + Environment.NewLine +  Environment.NewLine  +  invoicePDFText]" DisplayName="Send" sap:VirtualizedContainerService.HintSize="334,145" sap2010:WorkflowViewState.IdRef="SendOutlookMail_1" IsBodyHtml="False" IsDraft="False" Subject="Text Files" To="[ReceiverAddress]">
       <ui:SendOutlookMail.Files>
         <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
       </ui:SendOutlookMail.Files>
